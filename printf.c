@@ -74,7 +74,7 @@ int	_printf(const char *format, ...)
 		{'c', _print_c}
 	};
 
-	if ((*format == '%' && !*(format + 1)))
+	if (!format || !*format || (*format == '%' && !*(format + 1)))
 		return (-1);
 	va_start(args, format);
 	while (*format)
@@ -104,3 +104,4 @@ int	_printf(const char *format, ...)
 	}
 	return (count);
 }
+
