@@ -74,7 +74,7 @@ int	_printf(const char *format, ...)
 		{'c', _print_c}
 	};
 
-	if (!format || !*format || (*format == '%' && !*(format + 1)))
+	if ((*format == '%' && !*(format + 1)))
 		return (-1);
 	va_start(args, format);
 	while (*format)
@@ -103,4 +103,30 @@ int	_printf(const char *format, ...)
 		format++;
 	}
 	return (count);
+}
+
+int main(void)
+{
+    int len;
+    int len2;
+    // char *s2;
+
+    // s2 = "Mussum Ipsum, cacilds vidisMussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus. litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus.";
+    len = _printf("", "");
+    len2 = printf("", "");
+    printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    len = _printf("%c", 'g');
+    len2 = printf("%c", 'g');
+    printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    len = _printf("%a");
+    len2 = printf("%a");
+    printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    len = _printf("Percent:[%%%]\n");
+    len2 = printf("Percent:[%%%]\n");
+    printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    return (0);
 }
