@@ -74,9 +74,7 @@ int	_printf(const char *format, ...)
 		{'c', _print_c}
 	};
 
-	if (!format || !*format)
-		return (-1);
-	if (format[0] == '%' && !format[1])
+	if (!format || !*format || (*format == '%' && !*(format + 1)))
 		return (-1);
 	va_start(args, format);
 	while (*format)
@@ -89,7 +87,15 @@ int	_printf(const char *format, ...)
 			for (i = 0; i < 2; i++)
 			{
 				if (*format == funcs[i].value)
+				{
 					count += funcs[i].fp(&args);
+					break;
+				}
+				else if (*format == '%' || i == 1)
+				{
+					count += _putchar(*format);
+					break;
+				}
 			}
 		}
 		else
