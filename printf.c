@@ -32,11 +32,11 @@ int _puts(char *str)
  *Return: number of printed characters
  ***/
 
-int _string_put(va_list p)
+int _string_put(va_list *p)
 {
 	char *str;
 
-	str = va_arg(p, char *);
+	str = va_arg(*p, char *);
 	if (!str)
 	{
 		_puts("(null)");
@@ -51,11 +51,11 @@ int _string_put(va_list p)
  *Return: number of printed characters
  ***/
 
-int _print_c(va_list args)
+int _print_c(va_list *args)
 {
 	char c;
 
-	c = va_arg(args, int);
+	c = va_arg(*args, int);
 	return (_putchar(c));
 }
 
@@ -79,6 +79,8 @@ int	_printf(const char *format, ...)
 
 	if (!format || !*format)
 		return (-1);
+	if (*format == '%' && !*(format + 1))
+		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
@@ -90,7 +92,7 @@ int	_printf(const char *format, ...)
 			for (i = 0; i < 2; i++)
 			{
 				if (*format == funcs[i].value)
-					count += funcs[i].fp(args);
+					count += funcs[i].fp(&args);
 			}
 		}
 		else

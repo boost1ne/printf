@@ -15,12 +15,12 @@
 typedef struct display
 {
 	char value;
-	int (*fp)(va_list p);
+	int (*fp)(va_list *p);
 } display_t;
 
 int	_printf(const char *format, ...);
-int _print_c(va_list args);
-int _string_put(va_list p);
+int _print_c(va_list *args);
+int _string_put(va_list *p);
 int _puts(char *str);
 int _putchar(char c);
 
