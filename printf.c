@@ -89,15 +89,11 @@ int	_printf(const char *format, ...)
 			format++;
 			if (!*format)
 				break;
-			if (*format != '%')
+			for (i = 0; i < 2; i++)
 			{
-				for (i = 0; i < 2; i++)
-				{
-					if (*format == funcs[i].value)
-						count += funcs[i].fp(&args);
-				}
+				if (*format == funcs[i].value)
+					count += funcs[i].fp(&args);
 			}
-			count += _putchar(*format);
 		}
 		else
 			count += _putchar(*format);
