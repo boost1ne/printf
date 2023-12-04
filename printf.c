@@ -83,7 +83,7 @@ int	_printf(const char *format, ...)
 		{
 			format++;
 			if (!*format)
-				break;
+				return (-1);
 			for (i = 0; i < 2; i++)
 			{
 				if (*format == funcs[i].value)
