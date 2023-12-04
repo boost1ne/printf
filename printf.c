@@ -38,10 +38,7 @@ int _string_put(va_list *p)
 
 	str = va_arg(*p, char *);
 	if (!str)
-	{
-		_puts("(null)");
-		return (-1);
-	}
+		return (_puts("(null)"));
 	return (_puts(str));
 }
 
