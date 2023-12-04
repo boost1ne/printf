@@ -68,12 +68,3 @@ int	_printf(const char *format, ...)
     }
     return (count);
 }
-
-int main()
-{
-    int res = _printf("hello%s\n","world");
-    int res1 = printf("hello%s\n","world");
-    printf("len %d\n", res);
-    printf("len %d\n", res1);
-    return (0);
-}
