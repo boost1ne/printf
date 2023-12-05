@@ -16,6 +16,10 @@ int printf_handler(const char *format, va_list *args)
 	};
 
 	count = 0;
+
+	if (!format || !*format)
+		return -1;
+
 	while (*format)
 	{
 		if (*format == '%')
