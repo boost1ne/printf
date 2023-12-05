@@ -77,7 +77,7 @@ int	_printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	if (!*format || (*format == '%' && !*(format + 1)))
-		return (0);
+		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
