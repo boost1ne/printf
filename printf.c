@@ -32,11 +32,11 @@ int _puts(char *str)
  *Return: number of printed characters
  ***/
 
-int _string_put(va_list p)
+int _string_put(va_list *p)
 {
 	char *str;
 
-	str = va_arg(p, char *);
+	str = va_arg(*p, char *);
 	if (!str)
 		return (_puts("(null)"));
 	return (_puts(str));
@@ -48,11 +48,11 @@ int _string_put(va_list p)
  *Return: number of printed characters
  ***/
 
-int _print_c(va_list args)
+int _print_c(va_list *args)
 {
 	char c;
 
-	c = va_arg(args, int);
+	c = va_arg(*args, int);
 	return (_putchar(c));
 }
 
@@ -68,11 +68,6 @@ int	_printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int count = 0;
-	int i;
-	display_t funcs[2] = {
-		{'s', _string_put},
-		{'c', _print_c}
-	};
 
 	if (!format || !*format || (*format == '%' && !*(format + 1)))
 		return (-1);
@@ -82,24 +77,24 @@ int	_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (!*format)
-				return (-1);
-			for (i = 0; i < 2; i++)
+			switch (*format)
 			{
-				if (*format == funcs[i].value)
-				{
-					count += funcs[i].fp(args);
+				case '%':
+					count += write(1, &*format, 1);
 					break;
-				}
-				if (*format == '%' || i == 1)
-				{
-					count += _putchar(*format);
+				case 'c':
+					count += _print_c(&args);
 					break;
-				}
+				case 's':
+					count += _string_put(&args);
+					break;
+				default:
+					count += write(1, &*format, 1);
+					break;
 			}
 		}
 		else
-		 	count += _putchar(*format);
+			count += write(1, &*format, 1);
 		format++;
 	}
 	return (count);
