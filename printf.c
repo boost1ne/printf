@@ -99,8 +99,10 @@ int	_printf(const char *format, ...)
 			}
 		}
 		else
-			count += _putchar(*format);
-		format++;
+		{
+		 	count += _putchar(*format);
+			format++;
+		}
 	}
 	return (count);
 }
