@@ -31,5 +31,6 @@ int    _putunbr(unsigned int nb);
 int _print_octal(va_list *args);
 int _print_heXupp(va_list *args);
 int _print_hexa(va_list *args);
+int _print_binary(va_list *args);
 
 #endif
