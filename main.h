@@ -26,5 +26,10 @@ int _putchar(char c);
 int printf_handler(const char *format, va_list *args);
 int _print_nb(va_list *args);
 int    _putnbr(int nb);
+int _print_unb(va_list *args);
+int    _putunbr(unsigned int nb);
+int _print_octal(va_list *args);
+int _print_heXupp(va_list *args);
+int _print_hexa(va_list *args);
 
 #endif

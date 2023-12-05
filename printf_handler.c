@@ -1,6 +1,26 @@
 #include "main.h"
 
 /**
+ * init - a helper function to initialize struct
+ * Return: an array of structs
+*/
+
+display_t *init(void)
+{
+	static display_t funcs[8] = {
+		{'s', _string_put},
+		{'c', _print_c},
+		{'d', _print_nb},
+		{'i', _print_nb},
+		{'u', _print_unb},
+		{'o', _print_octal},
+		{'X', _print_heXupp},
+		{'x', _print_hexa}
+	};
+	return (funcs);
+}
+
+/**
  *printf_handler - formats and prints data to stdout
  *@format: format string to check
  *@args: list p
@@ -10,15 +30,9 @@
 int printf_handler(const char *format, va_list *args)
 {
 	unsigned int count, i;
-	display_t funcs[4] = {
-		{'s', _string_put},
-		{'c', _print_c},
-		{'d', _print_nb},
-		{'i', _print_nb}
-	};
+	display_t *funcs = init();
 
 	count = 0;
-
 	while (*format)
 	{
 		if (*format == '%')
@@ -26,7 +40,7 @@ int printf_handler(const char *format, va_list *args)
 			format++;
 			if (!*format)
 				break;
-			for (i = 0; i < 4; i++)
+			for (i = 0; i < 8; i++)
 			{
 				if (*format == ' ' && !*(format + 1))
 					return (-1);
@@ -35,7 +49,7 @@ int printf_handler(const char *format, va_list *args)
 					count += funcs[i].fp(args);
 					break;
 				}
-				if (*format == '%' || i == 3)
+				if (*format == '%' || i == 7)
 				{
 					count += _putchar(*format);
 					break;
