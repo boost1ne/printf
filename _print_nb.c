@@ -33,8 +33,9 @@ int    _putnbr(int nb)
 
 int _print_nb(va_list *args)
 {
-	int nb;
+	int nb, count;
 
 	nb = va_arg(*args, int);
-	return (_putnbr(nb));
+	count = _putnbr(nb);
+	return (count);
 }

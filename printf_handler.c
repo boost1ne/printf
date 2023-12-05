@@ -29,7 +29,7 @@ int printf_handler(const char *format, va_list *args)
 			for (i = 0; i < 4; i++)
 			{
 				if (*format == ' ' && !*(format + 1))
-					break;
+					return (-1);
 				if (*format == funcs[i].value)
 				{
 					count += funcs[i].fp(args);
