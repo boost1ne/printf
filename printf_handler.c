@@ -16,17 +16,17 @@ int printf_handler(const char *format, va_list *args)
 	};
 
 	count = 0;
-	while (*format != '\0')
+	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
 			if (!*format)
-				return (-1);
+				break;
 			for (i = 0; i < 2; i++)
 			{
 				if (*format == ' ' && !*(format + 1))
-					return (-1);
+					break;
 				if (*format == funcs[i].value)
 				{
 					count += funcs[i].fp(args);
