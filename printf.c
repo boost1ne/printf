@@ -104,24 +104,3 @@ int	_printf(const char *format, ...)
 	}
 	return (count);
 }
-
-#include <stdio.h>
-int main(void)
-{
-    int len;
-    int len2;
-
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    printf("Length:[%d, %d]\n", len2, len);
-    len = _printf("Character:[%c]\n", 'H');
-    len2 = printf("Character:[%c]\n", 'H');
-    printf("Length:[%d, %i]\n", len2, len);
-    len = _printf("String:[%s%s]\n", "I am a string !", "test");
-    len2 = printf("String:[%s%s]\n", "I am a string !", "test");
-    printf("Length:[%d, %i]\n", len2, len);
-    len = _printf("Percent:[%%%s]\n", "h");
-    len2 = printf("Percent:[%%%s]\n", "h");
-    printf("Length:[%d, %i]\n", len2, len);
-    return (0);
-}
