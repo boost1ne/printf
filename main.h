@@ -35,5 +35,6 @@ int _print_binary(va_list *args);
 int    _puthex(unsigned long nb);
 int _print_addr(va_list *args);
 int _print_rev(va_list *p);
+int _print_rot13(va_list *p);
 
 #endif
