@@ -13,6 +13,6 @@ int _print_addr(va_list *args)
 
 	count = write(1, "0x", 2);
 	nb = va_arg(*args, unsigned long);
-	count = _puthex(nb);
+	count += _puthex(nb);
 	return (count);
 }
