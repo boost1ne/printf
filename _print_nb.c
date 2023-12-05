@@ -18,7 +18,7 @@ int    _putnbr(int nb)
 	}
 	unb = nb;
 	if (unb > 9)
-		_putnbr(unb / 10);
+		count += _putnbr(unb / 10);
 	unb %= 10;
 	unb += 48;
 	count += write(1, &unb, 1);
