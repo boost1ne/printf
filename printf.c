@@ -68,41 +68,10 @@ int	_printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int count = 0;
-	int i;
-	display_t funcs[2] = {
-		{'s', _string_put},
-		{'c', _print_c}
-	};
 
 	if (!format || !*format || (*format == '%' && !*(format + 1)))
 		return (-1);
 	va_start(args, format);
-	while (*format != '\0')
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (!*format)
-				return (-1);
-			for (i = 0; i < 2; i++)
-			{
-				if (*format == ' ' && !*(format + 1))
-					return (-1);
-				if (*format == funcs[i].value)
-				{
-					count += funcs[i].fp(&args);
-					break;
-				}
-				if (*format == '%' || i == 1)
-				{
-					count += _putchar(*format);
-					break;
-				}
-			}
-		}
-		else
-			count += _putchar(*format);
-		format++;
-	}
+	count = printf_handler(format, &args);
 	return (count);
 }
