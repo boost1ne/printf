@@ -15,7 +15,7 @@
 typedef struct display
 {
 	char value;
-	int (*fp)(va_list p);
+	int (*fp)(va_list *p);
 } display_t;
 
 int	_printf(const char *format, ...);

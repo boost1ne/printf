@@ -68,8 +68,13 @@ int	_printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int count = 0;
+	int i;
+	display_t funcs[2] = {
+		{'s', _string_put},
+		{'c', _print_c}
+	};
 
-	if (!format || !*format || (*format == '%' && !*(format + 1)))
+	if (!format || !*format)
 		return (-1);
 	va_start(args, format);
 	while (*format)
@@ -77,25 +82,46 @@ int	_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			if (!*format)
+				return (-1);
+			for (i = 0; i < 2; i++)
 			{
-				case '%':
-					count += write(1, &*format, 1);
+				if (*format == funcs[i].value)
+				{
+					count += funcs[i].fp(&args);
 					break;
-				case 'c':
-					count += _print_c(&args);
+				}
+				if (*format == '%' || i == 1)
+				{
+					count += _putchar(*format);
 					break;
-				case 's':
-					count += _string_put(&args);
-					break;
-				default:
-					count += write(1, &*format, 1);
-					break;
+				}
 			}
 		}
 		else
-			count += write(1, &*format, 1);
+			count += _putchar(*format);
 		format++;
 	}
 	return (count);
+}
+
+#include <stdio.h>
+int main(void)
+{
+    int len;
+    int len2;
+
+    len = _printf("Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
+    printf("Length:[%d, %d]\n", len2, len);
+    len = _printf("Character:[%c]\n", 'H');
+    len2 = printf("Character:[%c]\n", 'H');
+    printf("Length:[%d, %i]\n", len2, len);
+    len = _printf("String:[%s%s]\n", "I am a string !", "test");
+    len2 = printf("String:[%s%s]\n", "I am a string !", "test");
+    printf("Length:[%d, %i]\n", len2, len);
+    len = _printf("Percent:[%%%s]\n", "h");
+    len2 = printf("Percent:[%%%s]\n", "h");
+    printf("Length:[%d, %i]\n", len2, len);
+    return (0);
 }
