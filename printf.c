@@ -74,8 +74,6 @@ int	_printf(const char *format, ...)
 		{'c', _print_c}
 	};
 
-	if (!format || !*format)
-		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
