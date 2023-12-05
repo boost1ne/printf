@@ -7,7 +7,7 @@
 
 display_t *init(void)
 {
-	static display_t funcs[10] = {
+	static display_t funcs[11] = {
 		{'s', _string_put},
 		{'c', _print_c},
 		{'d', _print_nb},
@@ -17,7 +17,8 @@ display_t *init(void)
 		{'X', _print_heXupp},
 		{'x', _print_hexa},
 		{'b', _print_binary},
-		{'p', _print_addr}
+		{'p', _print_addr},
+		{'r', _print_rev}
 	};
 	return (funcs);
 }
@@ -42,7 +43,7 @@ int printf_handler(const char *format, va_list *args)
 			format++;
 			if (!*format)
 				break;
-			for (i = 0; i < 10; i++)
+			for (i = 0; i < 11; i++)
 			{
 				if (*format == ' ' && !*(format + 1))
 					return (-1);
@@ -51,7 +52,7 @@ int printf_handler(const char *format, va_list *args)
 					count += funcs[i].fp(args);
 					break;
 				}
-				if (*format == '%' || i == 9)
+				if (*format == '%' || i == 10)
 				{
 					count += _putchar(*format);
 					break;
