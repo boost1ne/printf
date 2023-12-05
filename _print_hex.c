@@ -6,7 +6,7 @@
  * Return: printed char nbr
 */
 
-int    _puthex(unsigned int nb)
+int    _puthex(unsigned long nb)
 {
 	unsigned int count;
 
