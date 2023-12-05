@@ -10,9 +10,11 @@
 int printf_handler(const char *format, va_list *args)
 {
 	unsigned int count, i;
-	display_t funcs[2] = {
+	display_t funcs[4] = {
 		{'s', _string_put},
-		{'c', _print_c}
+		{'c', _print_c},
+		{'d', _print_nb},
+		{'i', _print_nb}
 	};
 
 	count = 0;
@@ -24,7 +26,7 @@ int printf_handler(const char *format, va_list *args)
 			format++;
 			if (!*format)
 				break;
-			for (i = 0; i < 2; i++)
+			for (i = 0; i < 4; i++)
 			{
 				if (*format == ' ' && !*(format + 1))
 					break;
@@ -33,7 +35,7 @@ int printf_handler(const char *format, va_list *args)
 					count += funcs[i].fp(args);
 					break;
 				}
-				if (*format == '%' || i == 1)
+				if (*format == '%' || i == 3)
 				{
 					count += _putchar(*format);
 					break;

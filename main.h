@@ -24,6 +24,7 @@ int _string_put(va_list *p);
 int _puts(char *str);
 int _putchar(char c);
 int printf_handler(const char *format, va_list *args);
+int _print_nb(va_list *args);
 
 
 #endif
