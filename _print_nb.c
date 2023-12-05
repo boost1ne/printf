@@ -3,14 +3,14 @@
 /**
  * _putnbr - print nmbrs
  * @nb: the nmber;
- * @printed: how many bytes written
+ * Return: printed char nbr
 */
 
 int    _putnbr(int nb)
 {
 	unsigned int unb, count;
 
-    count = 0;
+	count = 0;
 	if (nb < 0)
 	{
 		nb = -nb;
@@ -22,7 +22,7 @@ int    _putnbr(int nb)
 	unb %= 10;
 	unb += 48;
 	count += write(1, &unb, 1);
-    return (count);
+	return (count);
 }
 
 /**
@@ -33,8 +33,8 @@ int    _putnbr(int nb)
 
 int _print_nb(va_list *args)
 {
-    int nb;
+	int nb;
 
-    nb = va_arg(*args, int);
-    return (_putnbr(nb));
+	nb = va_arg(*args, int);
+	return (_putnbr(nb));
 }
