@@ -4,7 +4,7 @@
  * _putnbr - print nmbrs
  * @nb: the nmber;
  * Return: printed char nbr
-*/
+**/
 
 int    _putnbr(int nb)
 {
@@ -28,7 +28,7 @@ int    _putnbr(int nb)
  * _putunbr - print unsigned nmbrs
  * @nb: the nmber;
  * Return: printed char nbr
-*/
+**/
 
 int    _putunbr(unsigned int nb)
 {
@@ -47,7 +47,7 @@ int    _putunbr(unsigned int nb)
  * _print_nb - print nmbrs
  * @args: p
  * Return: how many bytes written
-*/
+**/
 
 int _print_nb(va_list *args)
 {
@@ -62,7 +62,7 @@ int _print_nb(va_list *args)
  * _print_unb - print unsigned nmbrs
  * @args: p
  * Return: how many bytes written
-*/
+**/
 
 int _print_unb(va_list *args)
 {
