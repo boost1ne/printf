@@ -63,7 +63,7 @@ int    _putheXupp(unsigned int nb)
  * _print_heXupp - print nmbrs
  * @args: p
  * Return: how many bytes written
-*/
+**/
 
 int _print_heXupp(va_list *args)
 {
