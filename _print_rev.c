@@ -39,7 +39,7 @@ int rev_puts(char *str, unsigned int len)
  *_print_rev - writes character to stdout
  *@p: variable arguments list
  *Return: number of printed characters
- ***/
+**/
 
 int _print_rev(va_list *p)
 {
