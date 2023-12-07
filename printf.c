@@ -4,7 +4,7 @@
  *_putchar - writes character to stdout
  *@c: the char to be printed
  *Return: the char
- ***/
+***/
 
 int _putchar(char c)
 {
@@ -15,7 +15,7 @@ int _putchar(char c)
  *_puts - writes str to stdout
  *@str: str
  *Return: number of printed characters
- ***/
+ **/
 
 int _puts(char *str)
 {
