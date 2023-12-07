@@ -4,7 +4,7 @@
  * _putbinary - print binary nmbrs
  * @nb: the nmber;
  * Return: printed char nbr
-*/
+**/
 
 int    _putbinary(unsigned int nb)
 {
@@ -23,7 +23,7 @@ int    _putbinary(unsigned int nb)
  * _print_binary - print nmbrs
  * @args: p
  * Return: how many bytes written
-*/
+**/
 
 int _print_binary(va_list *args)
 {
