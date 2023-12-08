@@ -10,7 +10,7 @@
  * and a p to the function associated
  * @value: the derective
  * @fp: function pointer
-*/
+**/
 
 typedef struct display
 {
