@@ -4,7 +4,7 @@
  * _putoctal - print octal nmbrs
  * @nb: the nmber;
  * Return: printed char nbr
-*/
+**/
 
 int    _putoctal(unsigned int nb)
 {
