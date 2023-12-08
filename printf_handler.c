@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * init - a helper function to initialize struct
+ * init - is a helper function to initialize struct
  * Return: an array of structs
 */
 
